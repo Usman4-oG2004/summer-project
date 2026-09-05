@@ -1,19 +1,15 @@
 {
-  "name": "term-project-f24",
+  "name": "summer-project",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:html": "htmlhint \"**/*.html\"",
+    "lint:css": "stylelint \"**/*.css\"",
+    "lint": "npm run lint:html && npm run lint:css",
+    "build": "mkdir -p dist && cp -r *.html css/ js/ images/ dist/ 2>/dev/null || cp *.html dist/ 2>/dev/null || true"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/imranucp/term-project-f24.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/imranucp/term-project-f24/issues"
-  },
-  "homepage": "https://github.com/imranucp/term-project-f24#readme",
-  "description": ""
+  "devDependencies": {
+    "htmlhint": "^1.1.4",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0"
+  }
 }

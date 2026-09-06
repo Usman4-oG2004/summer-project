@@ -1,0 +1,33 @@
+name: Staging CD Pipeline
+
+on:
+  push:
+    branches: [ release ]
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    environment:
+      name: staging-env
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Build Project Artifacts
+        run: |
+          npm install
+          npm run build
+
+      - name: Upload Staging Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: staging-build-artifacts
+          path: |
+            src/
+            styles/

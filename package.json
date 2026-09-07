@@ -5,7 +5,7 @@
     "lint:html": "htmlhint \"**/*.html\"",
     "lint:css": "stylelint \"**/*.css\"",
     "lint": "npm run lint:html && npm run lint:css",
-    "build": "mkdir -p dist && cp -r *.html css/ js/ images/ dist/ 2>/dev/null || cp *.html dist/ 2>/dev/null || true"
+    "build": "mkdir -p dist && cp -r src/* styles/ dist/ 2>/dev/null || cp src/*.html dist/ 2>/dev/null || true"
   },
   "devDependencies": {
     "htmlhint": "^1.1.4",

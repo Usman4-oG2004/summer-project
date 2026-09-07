@@ -1,24 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Project - Home</title>
-    <link rel="stylesheet" href="../styles/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CloudNova - Your premier DevOps partner for cloud infrastructure, CI/CD automation, and scalable deployments.">
+  <title>CloudNova - DevOps & Cloud Solutions</title>
+  <link rel="stylesheet" href="../styles/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --secondary: #1e293b;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #334155;
+      --text-muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--text-main);
+    }
+    /* Navbar */
+    nav {
+      background-color: var(--secondary);
+      color: white;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #38bdf8; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 7rem 2rem;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 60%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.2);
+      border: 1px solid rgba(59,130,246,0.4);
+      color: #38bdf8;
+      padding: 0.4rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+      position: relative;
+    }
+    .hero h1 span { color: #38bdf8; }
+    .hero p {
+      font-size: 1.25rem;
+      color: #94a3b8;
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      position: relative;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      position: relative;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .btn-outline:hover { border-color: #38bdf8; color: #38bdf8; transform: translateY(-2px); }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      background: var(--secondary);
+    }
+    .stat-item {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-bottom: 0.4rem;
+    }
+    .stat-item p { color: #94a3b8; font-size: 0.9rem; }
+
+    /* Services Preview */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--secondary);
+      margin-bottom: 0.75rem;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+    }
+    .card {
+      background: var(--card-bg);
+      padding: 2.5rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07);
+      border-top: 4px solid var(--primary);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    }
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      color: var(--secondary);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+    .card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--secondary), #0f172a);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .cta-section h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #64748b;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+    footer span { color: #38bdf8; }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">DevOpsPro</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h1>Welcome to DevOpsPro</h1>
-        <p>Your one-stop solution for cloud architecture and CI/CD pipelines.</p>
-    </main>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">CloudNova</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">🚀 Trusted DevOps Partner</div>
+    <h1>Build, Deploy &<br><span>Scale with Confidence</span></h1>
+    <p>CloudNova empowers engineering teams with enterprise-grade CI/CD pipelines, cloud infrastructure, and automated deployment solutions.</p>
+    <div class="hero-buttons">
+      <a href="services.html" class="btn-primary">Explore Services</a>
+      <a href="contact.html" class="btn-outline">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-item">
+      <h3>50+</h3>
+      <p>Projects Delivered</p>
+    </div>
+    <div class="stat-item">
+      <h3>99.9%</h3>
+      <p>Uptime Guaranteed</p>
+    </div>
+    <div class="stat-item">
+      <h3>3x</h3>
+      <p>Faster Deployments</p>
+    </div>
+    <div class="stat-item">
+      <h3>24/7</h3>
+      <p>Expert Support</p>
+    </div>
+  </div>
+
+  <!-- Services Preview -->
+  <div class="section">
+    <div class="section-header">
+      <h2>What We Do Best</h2>
+      <p>End-to-end DevOps solutions tailored for modern engineering teams.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">☁️</div>
+        <h3>Cloud Migration</h3>
+        <p>Seamlessly transition to AWS, Azure, or GCP with zero downtime and maximum reliability.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>CI/CD Automation</h3>
+        <p>Accelerate release cycles with robust pipelines — from code commit to production in minutes.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🐳</div>
+        <h3>Kubernetes Infra</h3>
+        <p>Design and manage containerized workloads with high availability and auto-scaling.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>24/7 Monitoring</h3>
+        <p>Proactive observability and alerting to resolve issues before they impact your users.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to Modernize Your Infrastructure?</h2>
+    <p>Let's build something reliable, fast, and scalable together.</p>
+    <a href="contact.html" class="btn-primary">Start a Conversation →</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 <span>CloudNova</span>. All rights reserved. Built with ❤️ by the DevOps Team.</p>
+  </footer>
+
 </body>
 </html>

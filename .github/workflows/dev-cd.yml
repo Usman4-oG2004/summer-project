@@ -1,0 +1,38 @@
+name: Development CD Pipeline
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  deploy-dev:
+    name: Deploy to Development Environment
+    runs-on: ubuntu-latest
+    environment: development-env
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Lint HTML Files
+        run: npx htmlhint "src/**/*.html"
+
+      - name: Lint CSS Files
+        run: npx stylelint "styles/**/*.css"
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Upload Build Artifacts to development-env
+        uses: actions/upload-artifact@v4
+        with:
+          name: development-build-artifact
+          path: dist/

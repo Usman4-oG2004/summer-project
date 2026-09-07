@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our cloud, CI/CD, and Kubernetes infrastructure services.">
+    <title>Services - DevOps Project</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <!-- Using Google Fonts for better aesthetics -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Inline basic premium styling since index.css might be empty */
+        :root {
+            --primary: #3b82f6;
+            --secondary: #1e293b;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            color: var(--text-main);
+        }
+        /* Navbar */
+        nav {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, #0f172a 100%);
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        /* Services Section */
+        .services {
+            max-width: 1200px;
+            margin: -3rem auto 4rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .service-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            color: var(--text-muted);
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">DevOpsPro</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Our Services</h1>
+        <p>Empowering your business with scalable, secure, and automated cloud infrastructure solutions.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <!-- Cloud Migration -->
+        <div class="service-card">
+            <h3>Cloud Migration</h3>
+            <p>Seamlessly transition your legacy applications to modern cloud environments. We ensure zero downtime and maximum scalability on AWS, Azure, or GCP.</p>
+        </div>
+
+        <!-- CI/CD Automation -->
+        <div class="service-card">
+            <h3>CI/CD Automation</h3>
+            <p>Accelerate your release cycles with robust continuous integration and deployment pipelines, ensuring fast and reliable software delivery.</p>
+        </div>
+
+        <!-- Kubernetes Infrastructure -->
+        <div class="service-card">
+            <h3>Kubernetes Infrastructure</h3>
+            <p>Design, deploy, and manage highly available containerized applications using Kubernetes for optimal resource utilization.</p>
+        </div>
+
+        <!-- 24/7 Monitoring -->
+        <div class="service-card">
+            <h3>24/7 Monitoring</h3>
+            <p>Proactive system monitoring and alerting to identify and resolve issues before they impact your users, ensuring 99.9% uptime.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 DevOpsPro. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

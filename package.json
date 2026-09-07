@@ -5,7 +5,7 @@
     "lint:html": "htmlhint \"**/*.html\"",
     "lint:css": "stylelint \"**/*.css\"",
     "lint": "npm run lint:html && npm run lint:css",
-    "build": "mkdir -p dist && cp -r src/* styles/ dist/ 2>/dev/null || cp src/*.html dist/ 2>/dev/null || true"
+    "build": "node -e \"const fs=require('fs'); fs.mkdirSync('dist', {recursive: true}); fs.cpSync('src', 'dist', {recursive: true}); if (fs.existsSync('styles')) fs.cpSync('styles', 'dist', {recursive: true});\""
   },
   "devDependencies": {
     "htmlhint": "^1.1.4",
